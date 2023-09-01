@@ -31,7 +31,11 @@ struct ContentView: View {
 }
 
 //MARK: -
+
+//UIViewControllerRepresentable : ViewControllerを作成・更新・破棄するためにそのメソッドを使用する。
+//SwiftUIビューと協調させたい場合、それらの相互作用を促進するためにコーディネーターのインスタンスを提供する必要がある。
 struct ImagePickerView: UIViewControllerRepresentable {
+    
     typealias UIViewControllerType = UIImagePickerController
     
     @Environment(\.presentationMode) var presentationMode
@@ -44,7 +48,29 @@ struct ImagePickerView: UIViewControllerRepresentable {
     
     var sourceType: SourceType
     var allowsEditing: Bool = false
+        
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) { }
 
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
+    
+    func makeUIViewController(context: Context) -> UIImagePickerController {
+        let viewController = UIImagePickerController()
+        viewController.delegate = context.coordinator
+        switch sourceType {
+        case .camera:
+            viewController.sourceType = UIImagePickerController.SourceType.camera
+        case .library:
+            viewController.sourceType = UIImagePickerController.SourceType.photoLibrary
+        }
+        viewController.allowsEditing = allowsEditing
+        return viewController
+    }
+
+    
+    //MARK: -
     class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         let parent: ImagePickerView
 
@@ -61,26 +87,8 @@ struct ImagePickerView: UIViewControllerRepresentable {
             parent.presentationMode.wrappedValue.dismiss()
         }
     }
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
-
-    func makeUIViewController(context: Context) -> UIImagePickerController {
-        let viewController = UIImagePickerController()
-        viewController.delegate = context.coordinator
-        switch sourceType {
-        case .camera:
-            viewController.sourceType = UIImagePickerController.SourceType.camera
-        case .library:
-            viewController.sourceType = UIImagePickerController.SourceType.photoLibrary
-        }
-        viewController.allowsEditing = allowsEditing
-        return viewController
-    }
-
-    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {
-    }
+    //MARK: -
+    
 }
 
 struct ContentView_Previews: PreviewProvider {

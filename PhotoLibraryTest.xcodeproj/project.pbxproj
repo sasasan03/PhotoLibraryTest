@@ -14,6 +14,7 @@
 		69A6A7A42AA0C9A4003BE9C0 /* PhotoLibraryTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A6A7A32AA0C9A4003BE9C0 /* PhotoLibraryTestTests.swift */; };
 		69A6A7AE2AA0C9A5003BE9C0 /* PhotoLibraryTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A6A7AD2AA0C9A5003BE9C0 /* PhotoLibraryTestUITests.swift */; };
 		69A6A7B02AA0C9A5003BE9C0 /* PhotoLibraryTestUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A6A7AF2AA0C9A5003BE9C0 /* PhotoLibraryTestUITestsLaunchTests.swift */; };
+		69A6A7BD2AA1F0EF003BE9C0 /* SliderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A6A7BC2AA1F0EF003BE9C0 /* SliderTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		69A6A7A92AA0C9A5003BE9C0 /* PhotoLibraryTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoLibraryTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		69A6A7AD2AA0C9A5003BE9C0 /* PhotoLibraryTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryTestUITests.swift; sourceTree = "<group>"; };
 		69A6A7AF2AA0C9A5003BE9C0 /* PhotoLibraryTestUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryTestUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		69A6A7BC2AA1F0EF003BE9C0 /* SliderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			children = (
 				69A6A7922AA0C9A3003BE9C0 /* PhotoLibraryTestApp.swift */,
 				69A6A7942AA0C9A3003BE9C0 /* ContentView.swift */,
+				69A6A7BC2AA1F0EF003BE9C0 /* SliderTest.swift */,
 				69A6A7962AA0C9A4003BE9C0 /* Assets.xcassets */,
 				69A6A7982AA0C9A4003BE9C0 /* Preview Content */,
 			);
@@ -258,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				69A6A7952AA0C9A3003BE9C0 /* ContentView.swift in Sources */,
+				69A6A7BD2AA1F0EF003BE9C0 /* SliderTest.swift in Sources */,
 				69A6A7932AA0C9A3003BE9C0 /* PhotoLibraryTestApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
