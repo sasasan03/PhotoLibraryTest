@@ -6,22 +6,38 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct SliderTest: View {
     
     @State private var sliderValue: Float = 5.0
+    @State private var flower = ""
     
     var body: some View {
-        VStack {
-            Text("スライダーで選択した値は\(sliderValue)です")
-            //MARK: - UIKitのSlider
-             UIKitSlider(value: $sliderValue)
-            //MARK: -  SwiftUIのslider
-//            Slider(value: $sliderValue,
-//                   in: 0...10,
-//                   step: 1.0
-//            )
-            //MARK: -
+        NavigationStack{
+            VStack {
+                Text("スライダーで選択した値は\(sliderValue)です")
+                //MARK: - UIKitのSlider
+                UIKitSlider(value: $sliderValue, flower: $flower)
+                    .background(Color.cyan)
+                VStack{
+                    ForEach(0..<10){ int in
+                        Text("\(int)")
+                    }
+                }
+                VStack{
+                    ForEach(0..<10){ int in
+                        Text("\(int)")
+                    }
+                }
+                //MARK: -  SwiftUIのslider
+    //            Slider(value: $sliderValue,
+    //                   in: 0...10,
+    //                   step: 1.0
+    //            )
+                //MARK: -
+            }
+            .background(Color.green)
         }
     }
 }
@@ -31,35 +47,38 @@ struct UIKitSlider: UIViewControllerRepresentable {
     typealias UIViewControllerType = UIViewController
     
     @Binding var value: Float
+    @Binding var flower: String
     
+    //MARK: -
     func makeUIViewController(context: Context) -> UIViewControllerType {
-        let viewController = UIViewController()
-        let slider = UISlider(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
         
+        let slider = UISlider(frame: CGRect(x: 0, y: 0, width: 300, height: 300))//🟦sliderの設定をする
         slider.minimumValue = 0
         slider.maximumValue = 10
-        slider.addTarget(
-            context.coordinator,
-            action: #selector(Coordinator.valueChange),
-            for: .valueChanged
+        slider.addTarget(//
+            context.coordinator,//ターゲットとなるオブジェクト。
+            action: #selector(Coordinator.valueChange),//実行するメソッドを指定。 @objcメソッドを呼ぶ⚠️
+            for: .valueChanged//発声するイベントを指定。値が変わった時にイベントが発生する。
         )
         
-        viewController.view.addSubview(slider)
+        let viewController = UIViewController()
+        viewController.view.addSubview(slider)//🟦Sliderをサブビューに追化
         
-        return viewController
+        return viewController //作られたViewControllerを返す
     }
     
+    //MARK: -
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
         if let slider = uiViewController.view.subviews.first as? UISlider {
             slider.value = value
         }
     }
-    
+    //MARK: -
     func makeCoordinator() -> Coordinator {
         Coordinator(parent: self)
     }
-    
-    class Coordinator: NSObject {
+    //MARK: -
+    class Coordinator {//: NSObject {
         var parent: UIKitSlider
         
         init(parent: UIKitSlider) {
@@ -70,9 +89,8 @@ struct UIKitSlider: UIViewControllerRepresentable {
             parent.value = sender.value
         }
     }
-    
 }
-
+//MARK: -
 struct SliderTest_Previews: PreviewProvider {
     static var previews: some View {
         SliderTest()
