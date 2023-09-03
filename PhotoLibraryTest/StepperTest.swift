@@ -13,18 +13,25 @@ struct StepperTest: View {
     @State private var weight = 50.0
     
     var body: some View {
-        Form {
-            Section(
-                content: { },
-                header: {
-                Text("体重")
-                }
-            ) {
-                Stepper(value: $weight) {
-                    Text("\(weight, specifier: "%.1f") Kg")
-                }
-            }
+        VStack{
+            Text("体重\(weight, specifier: "%.1f")kg")
+            
+            StepperView(weigth: $weight)
+                .frame(width: 100, height: 50)
+            
         }
+//        Form {
+//            Section(
+//                content: { },
+//                header: {
+//                Text("体重")
+//                }
+//            ) {
+//                Stepper(value: $weight) {
+//                    Text("\(weight, specifier: "%.1f") Kg")
+//                }
+//            }
+//        }
     }
 }
 
@@ -36,25 +43,26 @@ struct StepperView: UIViewControllerRepresentable {
     //MARK: -
     func makeUIViewController(context: Context) -> UIViewControllerType  {
         let stepper = UIStepper()
+        //🍟
+        stepper.addTarget(context.coordinator, action: #selector(Coordinator.changeValue(_:)), for: .valueChanged)
         
         stepper.value = weigth
         stepper.maximumValue = 55
         stepper.minimumValue = 45
+        stepper.autorepeat = true
         
         let viewController = UIViewController()
         viewController.view.addSubview(stepper)
-        
         return viewController
     }
     
     //MARK: -
-    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-        
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
     }
     
     //MARK: -
     func makeCoordinator() -> Coordinator {
-        Coordinator(parent: self)
+        return Coordinator(parent: self)
     }
     
     class Coordinator {
@@ -66,7 +74,14 @@ struct StepperView: UIViewControllerRepresentable {
         }
         
         @objc func changeValue(_ sender: UIStepper){
-            parent.weigth = sender.value
+            //🟦stepperの上限をかけに行く
+            var newValue = sender.value
+            if newValue > 55 {
+                newValue = 55
+            } else if newValue < 45 {
+                newValue = 45
+            }
+            parent.weigth = newValue
         }
     }
 }

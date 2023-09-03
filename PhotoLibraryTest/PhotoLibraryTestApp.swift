@@ -12,7 +12,8 @@ struct PhotoLibraryTestApp: App {
     var body: some Scene {
         WindowGroup {
 //            ContentView()
-            SliderTest()
+//            SliderTest()
+            StepperTest()
         }
     }
 }
