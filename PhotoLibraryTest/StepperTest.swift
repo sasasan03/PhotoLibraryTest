@@ -38,8 +38,8 @@ struct StepperView: UIViewControllerRepresentable {
         let stepper = UIStepper()
         
         stepper.value = weigth
-        stepper.maximumValue = 100
-        stepper.minimumValue = 10
+        stepper.maximumValue = 55
+        stepper.minimumValue = 45
         
         let viewController = UIViewController()
         viewController.view.addSubview(stepper)
@@ -56,7 +56,6 @@ struct StepperView: UIViewControllerRepresentable {
     func makeCoordinator() -> Coordinator {
         Coordinator(parent: self)
     }
-    
     
     class Coordinator {
         
