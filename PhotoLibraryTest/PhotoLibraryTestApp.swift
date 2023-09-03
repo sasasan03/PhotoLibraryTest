@@ -13,7 +13,8 @@ struct PhotoLibraryTestApp: App {
         WindowGroup {
 //            ContentView()
 //            SliderTest()
-            StepperTest()
+//            StepperTeszt()
+            ButtonTest()
         }
     }
 }

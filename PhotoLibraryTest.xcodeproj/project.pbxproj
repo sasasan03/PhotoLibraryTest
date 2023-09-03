@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		699E6ADF2AA316870077762C /* StepperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699E6ADE2AA316870077762C /* StepperTest.swift */; };
+		699E6AE12AA485BA0077762C /* ButtonTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699E6AE02AA485BA0077762C /* ButtonTest.swift */; };
 		69A6A7932AA0C9A3003BE9C0 /* PhotoLibraryTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A6A7922AA0C9A3003BE9C0 /* PhotoLibraryTestApp.swift */; };
 		69A6A7952AA0C9A3003BE9C0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A6A7942AA0C9A3003BE9C0 /* ContentView.swift */; };
 		69A6A7972AA0C9A4003BE9C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69A6A7962AA0C9A4003BE9C0 /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		699E6ADE2AA316870077762C /* StepperTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperTest.swift; sourceTree = "<group>"; };
+		699E6AE02AA485BA0077762C /* ButtonTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTest.swift; sourceTree = "<group>"; };
 		69A6A78F2AA0C9A3003BE9C0 /* PhotoLibraryTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoLibraryTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69A6A7922AA0C9A3003BE9C0 /* PhotoLibraryTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryTestApp.swift; sourceTree = "<group>"; };
 		69A6A7942AA0C9A3003BE9C0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				69A6A7942AA0C9A3003BE9C0 /* ContentView.swift */,
 				69A6A7BC2AA1F0EF003BE9C0 /* SliderTest.swift */,
 				699E6ADE2AA316870077762C /* StepperTest.swift */,
+				699E6AE02AA485BA0077762C /* ButtonTest.swift */,
 				69EC2DB22AA2054200F2558C /* MyPlayground.playground */,
 				69A6A7962AA0C9A4003BE9C0 /* Assets.xcassets */,
 				69A6A7982AA0C9A4003BE9C0 /* Preview Content */,
@@ -266,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				69A6A7952AA0C9A3003BE9C0 /* ContentView.swift in Sources */,
+				699E6AE12AA485BA0077762C /* ButtonTest.swift in Sources */,
 				69A6A7BD2AA1F0EF003BE9C0 /* SliderTest.swift in Sources */,
 				69A6A7932AA0C9A3003BE9C0 /* PhotoLibraryTestApp.swift in Sources */,
 				699E6ADF2AA316870077762C /* StepperTest.swift in Sources */,
