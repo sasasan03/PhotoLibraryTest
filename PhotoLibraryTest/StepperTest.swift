@@ -47,8 +47,8 @@ struct StepperView: UIViewControllerRepresentable {
         stepper.addTarget(context.coordinator, action: #selector(Coordinator.changeValue(_:)), for: .valueChanged)
         
         stepper.value = weigth
-        stepper.maximumValue = 55
-        stepper.minimumValue = 45
+//        stepper.maximumValue = 60
+//        stepper.minimumValue = 45
         stepper.autorepeat = true
         
         let viewController = UIViewController()
@@ -56,8 +56,17 @@ struct StepperView: UIViewControllerRepresentable {
         return viewController
     }
     
-    //MARK: -
+    //MARK: - ここでも制限をかけることは可能
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+//        if let stepper = uiViewController.view.subviews.first as? UIStepper {
+//            var newValue = weigth
+//            if newValue > 55 {
+//                newValue = 55
+//            } else if newValue < 45 {
+//                newValue = 45
+//            }
+//            stepper.value = newValue
+//        }
     }
     
     //MARK: -
@@ -73,11 +82,11 @@ struct StepperView: UIViewControllerRepresentable {
             self.parent = parent
         }
         
+        //ここでも上限をかけることは可能。上のstepperのプロパティへの代入でも可能
         @objc func changeValue(_ sender: UIStepper){
-            //🟦stepperの上限をかけに行く
             var newValue = sender.value
-            if newValue > 55 {
-                newValue = 55
+            if newValue > 60 {
+                newValue = 60
             } else if newValue < 45 {
                 newValue = 45
             }
