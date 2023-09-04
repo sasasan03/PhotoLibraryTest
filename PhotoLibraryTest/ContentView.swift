@@ -7,26 +7,113 @@
 
 import SwiftUI
 
+struct ImageNameSettingRowView : View {
+    
+    @Binding var text: String
+    @Binding var uiImage: UIImage?
+    @State var showingPicker = false
+    
+    var body: some View {
+        GeometryReader { geometry in
+            HStack{
+                Spacer()
+                VStack{
+                    if let image = uiImage {
+                        Image(uiImage: image)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width:  geometry.size.width * 0.3, height: geometry.size.height)
+                    } else {
+                        Rectangle()
+                            .frame(width:  geometry.size.width * 0.3, height: geometry.size.height)
+                    }
+                }
+//                .frame(width:  geometry.size.width * 0.3, height: geometry.size.height)
+                
+                Spacer()
+                VStack{
+                    Button("画像表示"){
+                        showingPicker = true
+                    }
+                    TextField("名前入力", text: $text)
+                        .textFieldStyle(.roundedBorder)
+                        .frame(width: geometry.size.width * 0.5)
+                }
+                Spacer()
+            }
+            .sheet(isPresented: $showingPicker) {
+                       ImagePickerView(image: $uiImage, sourceType: .library)
+                }
+        }
+    }
+}
+
 struct ContentView: View {
+    
+    @State var text1 = ""
+    @State var text2 = ""
+    @State var text3 = ""
+    @State var text4 = ""
+    @State var image1:UIImage?
+    @State var image2:UIImage?
+    @State var image3:UIImage?
+    @State var image4:UIImage?
     
     @State var showingPicker = false
     @State var image: UIImage?
+    @State var text = ""
+//    @State var imageNameSettingRowViews: [ImageNameSettingRowView]  = [
+//        ImageNameSettingRowView(text: Self.$text1),
+//        ImageNameSettingRowView(text: Self.$text2),
+//        ImageNameSettingRowView(text: Self.$text3),
+//        ImageNameSettingRowView(text: Self.$text4)
+//    ]
     
     var body: some View {
-        VStack {
-            if let image = image {
-                Image(uiImage: image)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-            }
-            Text("Image")
-                .onTapGesture {
-                    showingPicker.toggle()
+        
+        GeometryReader { geometry in
+            ZStack{
+                Color.green.ignoresSafeArea(.all)
+                
+                VStack{
+                    ImageNameSettingRowView(text: $text1, uiImage: $image1)
+                    ImageNameSettingRowView(text: $text2, uiImage: $image2)
+                    ImageNameSettingRowView(text: $text3, uiImage: $image3)
+                    ImageNameSettingRowView(text: $text4, uiImage: $image4)
                 }
+//                HStack{
+//                    Spacer()
+//                    Rectangle()
+//                        .frame(width: geometry.size.width * 0.3, height: geometry.size.height * 0.19)
+//                    Spacer()
+//                    TextField("名前入力", text: $text)
+//                        .textFieldStyle(.roundedBorder)
+//                        .frame(width: geometry.size.width * 0.3)
+//                    Spacer()
+//                }
+
+            }
         }
-        .sheet(isPresented: $showingPicker) {
-            ImagePickerView(image: $image, sourceType: .library)
-        }
+       
+//        VStack {
+//        if let image = image {
+//            let _ = print("🍔", image)
+//            Image(uiImage: image)
+//                .resizable()
+//                .aspectRatio(contentMode: .fit)
+//                .frame(width: geometry.size.width * 0.4, height: geometry.size.height * 0.2)
+//        } else {
+//            Color.blue
+//                .frame(width: geometry.size.width * 0.4, height: geometry.size.height * 0.2)
+//        }
+//            Text("Image")
+//                .onTapGesture {
+//                    showingPicker.toggle()
+//                }
+//        }
+//        .sheet(isPresented: $showingPicker) {
+//            ImagePickerView(image: $image, sourceType: .library)
+//        }
     }
 }
 
