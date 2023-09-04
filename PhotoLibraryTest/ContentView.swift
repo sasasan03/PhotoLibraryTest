@@ -54,7 +54,6 @@ struct ImagePickerView: UIViewControllerRepresentable {
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
-
     
     func makeUIViewController(context: Context) -> UIImagePickerController {
         let viewController = UIImagePickerController()
@@ -88,7 +87,6 @@ struct ImagePickerView: UIViewControllerRepresentable {
         }
     }
     //MARK: -
-    
 }
 
 struct ContentView_Previews: PreviewProvider {

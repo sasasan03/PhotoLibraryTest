@@ -42,6 +42,7 @@ struct StepperView: UIViewControllerRepresentable {
     
     //MARK: -
     func makeUIViewController(context: Context) -> UIViewControllerType  {
+
         let stepper = UIStepper()
         //🍟
         stepper.addTarget(context.coordinator, action: #selector(Coordinator.changeValue(_:)), for: .valueChanged)
@@ -58,6 +59,7 @@ struct StepperView: UIViewControllerRepresentable {
     
     //MARK: - ここでも制限をかけることは可能
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+
 //        if let stepper = uiViewController.view.subviews.first as? UIStepper {
 //            var newValue = weigth
 //            if newValue > 55 {

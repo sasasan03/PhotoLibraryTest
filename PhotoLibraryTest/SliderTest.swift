@@ -20,16 +20,6 @@ struct SliderTest: View {
                 //MARK: - UIKitのSlider
                 UIKitSlider(value: $sliderValue, flower: $flower)
                     .background(Color.cyan)
-                VStack{
-                    ForEach(0..<10){ int in
-                        Text("\(int)")
-                    }
-                }
-                VStack{
-                    ForEach(0..<10){ int in
-                        Text("\(int)")
-                    }
-                }
                 //MARK: -  SwiftUIのslider
     //            Slider(value: $sliderValue,
     //                   in: 0...10,
