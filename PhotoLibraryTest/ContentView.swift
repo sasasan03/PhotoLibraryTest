@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+struct ImageText {
+    var text: String = ""
+    var image: UIImage?
+}
+
 struct ImageNameSettingRowView : View {
     
     @Binding var text: String
@@ -28,7 +33,6 @@ struct ImageNameSettingRowView : View {
                             .frame(width:  geometry.size.width * 0.3, height: geometry.size.height)
                     }
                 }
-//                .frame(width:  geometry.size.width * 0.3, height: geometry.size.height)
                 
                 Spacer()
                 VStack{
@@ -50,6 +54,7 @@ struct ImageNameSettingRowView : View {
 
 struct ContentView: View {
     
+    @State private var rows: [ImageText] = Array(repeating: ImageText(), count: 4)
     @State var text1 = ""
     @State var text2 = ""
     @State var text3 = ""
@@ -62,12 +67,6 @@ struct ContentView: View {
     @State var showingPicker = false
     @State var image: UIImage?
     @State var text = ""
-//    @State var imageNameSettingRowViews: [ImageNameSettingRowView]  = [
-//        ImageNameSettingRowView(text: Self.$text1),
-//        ImageNameSettingRowView(text: Self.$text2),
-//        ImageNameSettingRowView(text: Self.$text3),
-//        ImageNameSettingRowView(text: Self.$text4)
-//    ]
     
     var body: some View {
         
@@ -76,10 +75,9 @@ struct ContentView: View {
                 Color.green.ignoresSafeArea(.all)
                 
                 VStack{
-                    ImageNameSettingRowView(text: $text1, uiImage: $image1)
-                    ImageNameSettingRowView(text: $text2, uiImage: $image2)
-                    ImageNameSettingRowView(text: $text3, uiImage: $image3)
-                    ImageNameSettingRowView(text: $text4, uiImage: $image4)
+                    ForEach(0..<rows.count, id: \.self){ index in
+                        ImageNameSettingRowView(text: $rows[index].text, uiImage: $rows[index].image)
+                    }
                 }
 //                HStack{
 //                    Spacer()
