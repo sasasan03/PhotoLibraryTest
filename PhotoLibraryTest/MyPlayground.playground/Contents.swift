@@ -4,6 +4,7 @@ import Foundation
 import PlaygroundSupport
 
 
+
 //-----------------------------------------コンピューテッドプロパティ
 //struct Person {
 //    var firstName: String

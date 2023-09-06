@@ -31,23 +31,23 @@ struct ImageNameSettingRowView : View {
                     } else {
                         Rectangle()
                             .frame(width:  geometry.size.width * 0.3, height: geometry.size.height)
+                            .onTapGesture(count: 1){
+                                showingPicker = true
+                            }
                     }
                 }
                 
                 Spacer()
-                VStack{
-                    Button("画像表示"){
-                        showingPicker = true
-                    }
-                    TextField("名前入力", text: $text)
-                        .textFieldStyle(.roundedBorder)
-                        .frame(width: geometry.size.width * 0.5)
-                }
+                
+                TextField("名前入力", text: $text)
+                    .textFieldStyle(.roundedBorder)
+                    .frame(width: geometry.size.width * 0.5)
+                
                 Spacer()
             }
             .sheet(isPresented: $showingPicker) {
-                       ImagePickerView(image: $uiImage, sourceType: .library)
-                }
+                ImagePickerView(image: $uiImage, sourceType: .library)
+            }
         }
     }
 }
@@ -55,14 +55,6 @@ struct ImageNameSettingRowView : View {
 struct ContentView: View {
     
     @State private var rows: [ImageText] = Array(repeating: ImageText(), count: 4)
-    @State var text1 = ""
-    @State var text2 = ""
-    @State var text3 = ""
-    @State var text4 = ""
-    @State var image1:UIImage?
-    @State var image2:UIImage?
-    @State var image3:UIImage?
-    @State var image4:UIImage?
     
     @State var showingPicker = false
     @State var image: UIImage?
@@ -79,39 +71,8 @@ struct ContentView: View {
                         ImageNameSettingRowView(text: $rows[index].text, uiImage: $rows[index].image)
                     }
                 }
-//                HStack{
-//                    Spacer()
-//                    Rectangle()
-//                        .frame(width: geometry.size.width * 0.3, height: geometry.size.height * 0.19)
-//                    Spacer()
-//                    TextField("名前入力", text: $text)
-//                        .textFieldStyle(.roundedBorder)
-//                        .frame(width: geometry.size.width * 0.3)
-//                    Spacer()
-//                }
-
             }
         }
-       
-//        VStack {
-//        if let image = image {
-//            let _ = print("🍔", image)
-//            Image(uiImage: image)
-//                .resizable()
-//                .aspectRatio(contentMode: .fit)
-//                .frame(width: geometry.size.width * 0.4, height: geometry.size.height * 0.2)
-//        } else {
-//            Color.blue
-//                .frame(width: geometry.size.width * 0.4, height: geometry.size.height * 0.2)
-//        }
-//            Text("Image")
-//                .onTapGesture {
-//                    showingPicker.toggle()
-//                }
-//        }
-//        .sheet(isPresented: $showingPicker) {
-//            ImagePickerView(image: $image, sourceType: .library)
-//        }
     }
 }
 

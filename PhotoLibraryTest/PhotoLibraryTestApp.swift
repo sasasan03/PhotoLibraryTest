@@ -11,10 +11,10 @@ import SwiftUI
 struct PhotoLibraryTestApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
 //            SliderTest()
 //            StepperTest()
-//            ButtonTest()
+            ButtonTest()
         }
     }
 }

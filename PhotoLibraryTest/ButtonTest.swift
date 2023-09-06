@@ -11,6 +11,7 @@ import UIKit
 struct ButtonTest: View {
     
     @State private var name: String = "sako"
+    @State private var isOn: Bool = false
     
     var body: some View {
         VStack{
@@ -18,6 +19,17 @@ struct ButtonTest: View {
             MyButton(name: $name)
                  .frame(width: 200,height: 50)
                  .background(Color.purple)
+            Text("推して")
+                .frame(width: 200, height: 50)
+                .background(Color.blue)
+                .onLongPressGesture(minimumDuration: 2,maximumDistance: 3) {
+                    isOn.toggle()
+                }
+            if isOn {
+                Text("ほげほげ")
+            } else {
+                Text("")
+            }
         }
     }
 }
